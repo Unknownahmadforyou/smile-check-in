@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
 import { Calendar, Check, User, Users } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -15,12 +16,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-background">
       {/* Sidebar */}
-      <div className="hidden md:flex w-64 flex-col bg-white border-r border-gray-200 shadow-sm">
+      <div className="hidden md:flex w-64 flex-col bg-card border-r border-border shadow-sm">
         <div className="p-6">
           <h2 className="text-xl font-bold gradient-text">SmileCheck</h2>
-          <p className="text-sm text-gray-500 mt-1">Face Recognition Attendance</p>
+          <p className="text-sm text-muted-foreground mt-1">Face Recognition Attendance</p>
         </div>
         <Separator />
         <div className="flex-1 py-6">
@@ -63,17 +64,20 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </Link>
           </nav>
         </div>
-        <div className="p-4 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center">© 2025 SmileCheck</p>
+        <div className="p-4 border-t border-border">
+          <div className="flex justify-between items-center">
+            <p className="text-xs text-muted-foreground">© 2025 SmileCheck</p>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
       {/* Main content */}
       <div className="flex-1">
         {/* Mobile header */}
-        <div className="md:hidden bg-white p-4 flex items-center justify-between border-b border-gray-200">
+        <div className="md:hidden bg-card p-4 flex items-center justify-between border-b border-border">
           <h2 className="text-lg font-bold gradient-text">SmileCheck</h2>
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 items-center">
             <Link to="/">
               <Button variant="ghost" size="icon" className={isActive('/') ? 'bg-attendance-light text-attendance-dark' : ''}>
                 <User className="h-5 w-5" />
@@ -94,6 +98,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Calendar className="h-5 w-5" />
               </Button>
             </Link>
+            <ThemeToggle />
           </div>
         </div>
 
